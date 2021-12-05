@@ -14,6 +14,7 @@ const http = require('http');
 
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+/* También en la terminal podriamos poner npm start y levantariamos el servidor, no solamente nodemon, hay mas maneras */
 
 /**
  * Create HTTP server.

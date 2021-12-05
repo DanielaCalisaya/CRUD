@@ -11,6 +11,7 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");//Fun
 const controller = {
 	index: (req, res) => {
 		let productsInSale = products.filter(product => product.category === "in-sale")//Filtramos todos los productos que en su categoria figura como 'in-sale'
+		//res.send(productsInSale) ->prueba, vemos la categoria inSale ero en formato JSON
 		let productsVisited = products.filter(product => product.category === 'visited')//Hacemos lo mismo pero con los productos visitados
 
 		res.render('index', { //Aqui mandamos todos estos productos seleccionados a la vista, sumado a la funcion toThousand que muestra el precio
@@ -23,5 +24,7 @@ const controller = {
 		// Do the magic
 	},
 };
+
+
 
 module.exports = controller;
