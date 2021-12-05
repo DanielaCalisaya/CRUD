@@ -36,23 +36,29 @@ const controller = {
 	store: (req, res) => {
 		//Al hacer un res.send me llegan los datos como en el json, diferente a res.render
 		//res.send(req.body)En el body es donde viajan los datos del formulario en el objeto req
-		const { name, price, discount, category, description } = req.body//Destructuramos el body y accedeemos a cada una de sus propiedades
+		//const { name, price, discount, category, description } = req.body;//Destructuramos el body y accedeemos a cada una de sus propiedades
 
 		let lastId = 1;
 
-		products.forEach(products => {
-			if(products.id > lastId){
-				lastId = products.id
+		products.forEach(product => {
+			if(product.id > lastId){
+				lastId = product.id
 			}
 		});
 
-		let newProduct = { //Este objeto creará el nuevo objeto
+		/* let newProduct = { //Este objeto creará el nuevo objeto
 			id: lastId + 1,
 			name,
-			price,
-			discount,
+			price: +price,
+			discount: +discount,
 			category,
 			description,
+			image: "default-image.png"
+		} */
+
+		let newProduct = { // <- objeto
+			...req.body, //Con el espress operator sacamos varias lineas de codigo(como el objeto anterior)
+			id: lastId + 1,
 			image: "default-image.png"
 		}
 
@@ -74,12 +80,40 @@ const controller = {
 	},
 	// Update - Method to update
 	update: (req, res) => {
-		// Do the magic
+        let productId = +req.params.id;
+
+		const { name, price, discount, category, description } = req.body;
+
+		products.forEach(product => {
+			if(product.id === productId){
+			    product.id = product.id,
+			    product.name = name,
+				product.price = +price,
+				product.discount = discount,
+				product.description = description,
+				product.image = product.image
+			}
+		}) 
+
+		writeJson(products)
+
+		res.redirect(`/products/detail/${productId}`) //Que me redireccione al producto que acabo de editar
 	},
 
 	// Delete - Delete one product from DB
-	destroy : (req, res) => {
-		// Do the magic
+	destroy: (req, res) => {
+		let productId = +req.params.id;
+
+		products.forEach(product => {
+			if(product.id === productId){
+                let productToDestroyIndex = products.indexOf(product) //Si encuentra el elemento indexOf me devuelve la posición si no lo encuentra me devuelve -1
+				//Linea de abajo, primer parámetro es el indice del elemento a borrar y el segundo la cantidad de elementos que quiero borrar
+				productToDestroyIndex !== -1 ? products.splice(productToDestroyIndex, 1) : console.log('No se encontró el producto') //Y en caso de que no lo encuentre me tirará un console.log
+			}
+		})
+
+		writeJson(products)
+		res.redirect('/products');
 	}
 };
 
