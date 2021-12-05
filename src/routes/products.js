@@ -9,16 +9,16 @@ const productsController = require('../controllers/productsController');
 router.get('/', productsController.index); 
 
 /*** CREATE ONE PRODUCT ***/ 
-//router.???('/???/', productsController.create); 
-//router.???('/', productsController.store); 
+router.get('/create/', productsController.create); //Aqui podemos ponerles el mismo nombre a la ruta porque no habra problemas porque una es por get y la otra por post
+router.post('/', productsController.store); //Recibira los datos del form para poder cargarlos
 
 
 /*** GET ONE PRODUCT ***/ 
 router.get('/detail/:id/', productsController.detail); 
 
 /*** EDIT ONE PRODUCT ***/ 
-//router.???('/:id/???', productsController.edit); 
-//router.???('/:id', productsController.update); 
+router.get('/:id/edit', productsController.edit); 
+router.put('/:id', productsController.update); 
 
 
 /*** DELETE ONE PRODUCT***/ 

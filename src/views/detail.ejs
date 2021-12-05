@@ -53,8 +53,8 @@
 
 						<a href="#" class="buy-now-button">COMPRAR AHORA</a>
 						<hr>
-                        <!-- Esta a me lleva al formulario de edición para editar el producto-->
-						<a href="/products/edit/<%- product.id %>" class="action-button edit">EDITAR PRODUCTO</a>
+                        <!-- Esta "a" me lleva al formulario de edición para editar el producto-->
+						<a href="/products/<%- product.id %>/edit" class="action-button edit">EDITAR PRODUCTO</a>
 						<!-- Cuando eliminamos tenemos que usar un form porque le estamos pasando los datos que queremos eliminar a una ruta que recibe datos por post(metodo-override)-->
 						<form action="/products/delete/<%- product.id %>?_method=DELETE" method="POST" style="display: inline-flex">
 							<button type="submit" class="action-button delete">ELIMINAR</button>
