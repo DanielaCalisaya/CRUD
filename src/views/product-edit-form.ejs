@@ -15,7 +15,7 @@
 		</div>
 		<div class="col-12">
 			<!-- Esta ruta es para edicion y como no soporta usamos el metodo override -->
-			<form action="/products/<%= product.id %>?_method=PUT" method="POST">
+			<form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 				<div class="row product-detail">
 					<div class="col-12 col-md-6">
 						<label for="name" class="form-label">Nombre del producto:</label>
@@ -38,6 +38,16 @@
 							<option value="in-sale" <%- product.category === "in-sale" && `selected` %> >En oferta</option>
 							<option value="visited" <%- product.category === "visited" && `selected` %> >Últimos agregados</option>
 						</select>
+					</div>
+					<!-- input file -->
+					<div class="input-group mb-3">
+						<div class="input-group-prepand">
+                             <span class="input-group-text" id="inputGroupFileAddon0"></span>
+						</div>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="inputGroupFile01" name="image">
+						     <label class="custom-file-label" for="inputGroupFile01">Upload</label>
+						</div>
 					</div>
 					<div class="col-12">
 						<label for="description" class="form-label">Descripción:</label>

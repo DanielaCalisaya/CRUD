@@ -59,7 +59,7 @@ const controller = {
 		let newProduct = { // <- objeto
 			...req.body, //Con el espress operator sacamos varias lineas de codigo(como el objeto anterior)
 			id: lastId + 1,
-			image: "default-image.png"
+			image: req.file ? req.file.filename : "default-image.png"//if ternario, si subio archivos poner este nombre, sino poner imagen por default
 		}
 
 		products.push(newProduct)//Push, esto se empujaria al json
@@ -90,8 +90,17 @@ const controller = {
 			    product.name = name,
 				product.price = +price,
 				product.discount = discount,
-				product.description = description,
-				product.image = product.image
+				product.description = description
+				if(req.file){
+					if(fs.existsSync("./public/images/products/", product.image)){  
+						fs.unlinkSync(`./public/images/products/${product.image}`)
+					}else{
+						 console.log("No encontré el archivo")
+					}
+					product.image = req.file.filename
+				}else{
+                    product.image = product.image
+				}  //O cambia la imagen o deja la misma foto
 			}
 		}) 
 
@@ -106,9 +115,20 @@ const controller = {
 
 		products.forEach(product => {
 			if(product.id === productId){
+
+                if(fs.existsSync("./public/images/products/", product.image)){ //existsSync devuelve un booleano, en caso de que exista ese archivo lo vamos a eliminar con el método unlinkSync
+                    fs.unlinkSync(`./public/images/products/${product.image}`)
+				}else{
+                     console.log("No encontré el archivo")
+				}
+
                 let productToDestroyIndex = products.indexOf(product) //Si encuentra el elemento indexOf me devuelve la posición si no lo encuentra me devuelve -1
 				//Linea de abajo, primer parámetro es el indice del elemento a borrar y el segundo la cantidad de elementos que quiero borrar
-				productToDestroyIndex !== -1 ? products.splice(productToDestroyIndex, 1) : console.log('No se encontró el producto') //Y en caso de que no lo encuentre me tirará un console.log
+				if(productToDestroyIndex !== -1) {
+				    products.splice(productToDestroyIndex, 1)
+				}else{
+					console.log('No se encontró el producto')//Y en caso de que no lo encuentre me tirará un console.log 
+			    } 
 			}
 		})
 

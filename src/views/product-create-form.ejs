@@ -16,7 +16,7 @@
 		<div class="col-12">
 			<!-- Asi todos estos datos tendrian que llegar bien al metodo del controlador -->
 			<!-- No olvidar el action, que es la ruta, el metodo POST y los imput que tengan name -->
-			<!-- Como instalamos multer, debe tener en el form el enctype="multipart/form-data" -->
+			<!-- Como instalamos multer, debe tener en el form el enctype="multipart/form-data" (si sube imagenes, sino no)-->
 			<form action="/products" method="POST" enctype="multipart/form-data">
 				<div class="row product-detail">
 					<div class="col-12 col-md-6">
@@ -39,10 +39,17 @@
 							<option value="visited">Últimos agregados</option>
 						</select>
 					</div>
-					<div class="input-group mb-3 col-12 col-md-6">
-						<label class="input-group-text" for="inputGroupFile01">Upload</label>
-						<input type="file" class="form-control" id="inputGroupFile01" name="image">
+					<!-- input file -->
+					<div class="input-group mb-3">
+						<div class="input-group-prepand">
+                             <span class="input-group-text" id="inputGroupFileAddon0"></span>
+						</div>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="inputGroupFile01" name="image">
+						     <label class="custom-file-label" for="inputGroupFile01">Upload</label>
+						</div>
 					</div>
+
 					<div class="col-12">
 						<label for="description" class="form-label">Descripción:</label>
 						<textarea name="description" id="description" class="form-input"></textarea>
