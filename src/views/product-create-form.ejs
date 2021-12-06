@@ -16,7 +16,8 @@
 		<div class="col-12">
 			<!-- Asi todos estos datos tendrian que llegar bien al metodo del controlador -->
 			<!-- No olvidar el action, que es la ruta, el metodo POST y los imput que tengan name -->
-			<form action="/products" method="POST">
+			<!-- Como instalamos multer, debe tener en el form el enctype="multipart/form-data" -->
+			<form action="/products" method="POST" enctype="multipart/form-data">
 				<div class="row product-detail">
 					<div class="col-12 col-md-6">
 						<label for="name" class="form-label">Nombre del producto:</label>
@@ -37,6 +38,10 @@
 							<option value="in-sale">En oferta</option>
 							<option value="visited">Últimos agregados</option>
 						</select>
+					</div>
+					<div class="input-group mb-3 col-12 col-md-6">
+						<label class="input-group-text" for="inputGroupFile01">Upload</label>
+						<input type="file" class="form-control" id="inputGroupFile01" name="image">
 					</div>
 					<div class="col-12">
 						<label for="description" class="form-label">Descripción:</label>
