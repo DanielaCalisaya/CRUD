@@ -13,15 +13,19 @@
 
 	<!-- todos los productos -->
 	<div class="container products-wrapper">
+
 		<div class="row">
+
 			<div class="col-12">
 				<h2 class="products-title">Resultados de la búsqueda: ¿?</h2>
 			</div>
+
 				<div class="col-12 col-sm-6 col-lg-3">
+
 					<section class="product-box">
-						<a href="/products/detail/¿?">
+						<a href="/products/detail/<%- product.id %>">
 							<figure class="product-box_image">
-								<img src="/images/products/¿?" alt="imagen de producto">
+								<img src="/images/products/<%- product.image[0]%>" alt="imagen de producto">
 							</figure>
 							<article class="product-box_data">
 								<h2>$FINAL PRICE</h2>
@@ -31,12 +35,15 @@
 							</article>
 						</a>
 					</section>
+
 				</div>
 
 			<div class="col-12">
 				<h2 class="products-title" style="color: tomato;">No hay productos que coincidan con esa búsqueda</h2>
 			</div>
+
 		</div>
+
 	</div>
 	<!-- /todos los productos -->
 
@@ -45,3 +52,30 @@
 	<!-- /footer -->
 </body>	
 </html>
+
+<!-- <main class="categories">
+	<div class="container products-container">
+		<% if (result.length > 0) { %>
+			<h2 class="subtitle">Resultados de la búsqueda de <%- search %></h2>
+			<section class="products">
+				<% result.forEach(product => { %>
+					<div class="product">
+						<a href="/products/detail/<%- product.id %>">
+							<div class="productDiscount"><%- product.discount %>% OFF</div>
+							<img src="/images/productos/<%- product.image[0]%>" alt="">
+							<p class="productName"> 
+								<% if (product.name.length > 30) { %>
+									<%- `${product.name.slice(0,30)}...` %>
+								<% } else { %>
+									<%= product.name %>
+								<% } %></p>
+							<h4 class="productPrice">$<%- product.price %></h4>
+						</a>
+					</div>
+				<% }) %> 
+			</section> 
+		<% }else{%>
+			<h2 class="subtitle">No hay resultados de la búsqueda de <%- search %></h2>
+		<% } %>
+	</div>
+</main> -->

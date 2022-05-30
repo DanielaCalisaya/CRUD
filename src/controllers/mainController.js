@@ -21,12 +21,23 @@ const controller = {
 		})
 	},
 	search: (req, res) => {
-		// Do the magic
-	},
+        let keywords = req.query.keywords.trim().toLowerCase() 
+		// Capturo lo que escribo en el buscador(keywords:palabra clave), le elimino los espacios en blanco y dejaria todo en minuscula. 
+		//La cadena original no se modifica.
+
+        let result = products.filter(product => product.name.toLowerCase().includes(keywords))
+        //Filtramos todos los productos, para encontrar el producto en su propiedad nombre, en minuscula, ve si incluye el keywords
+
+        res.render('results', {
+            result,
+            search: keywords
+        })
+
+    }
 };
 
 /* search: 
-El método toLowerCase () convierte la cadena de texto especificada en una nueva 
+El método toLowerCase() convierte la cadena de texto especificada en una nueva 
 que consta solo de letras minúsculas y devuelve ese valor. 
 Significa que la cadena original antigua no se modifica ni se ve afectada de ninguna manera 
 
