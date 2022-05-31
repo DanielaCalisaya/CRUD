@@ -3,31 +3,23 @@
 ![logo](public/images/logo-mercado-liebre.svg)
 ![banner](public/images/img-home-banner.jpg)
 
-# Episodio I y II
+## Episodio I y II
 
-## Objetivo episodio 1
-Todo eMarket que se respete necesita que sea posible agregar, borrar y modificar
-productos y que los mismos se persistan en una base de datos. Adicionalmente, también
+# CRUD (Create, Read, Update, Delete).
+Proceso que nos permite crear, leer, actualizar y borrar registros de nuestra base de datos. 
+- Es decir que crea registros y los almacena en nuestra base de datos.
+- Lee registros y los muestra en nuestras vistas.
+- Actualiza registros y persiste en nuestra base de datos.
+- Borra registros de nuestras bases de datos.
+
+Todo eMarket necesita que sea posible agregar un producto, incluyendo su imagen, editar y borrar
+el mismo y que los productos persistan en una base de datos. También
 debe permitir leer los productos presentes en dicha base de datos de una manera rápida
-y sencilla.
+y sencilla. Seguro en algun momento necesitamos buscar algun producto rápidamente, para eso también contamos con  el buscador, buscará en la base de datos coincidencias con lo escrito. Además si hubiera algún error en las rutas, este eMarket contará con la página de error 404.
 
-A este sistema, en el mundo del desarrollo, se le conoce como ABM (Alta, Baja,
-Modificación) o CRUD (Create, Read, Update, Delete).
+Link deployed to Heroku: 
 
-Así que nuestro enfoque en esta oportunidad será desarrollar dicha funcionalidad, pues
-nuestros inversores quieren salir con la web al aire lo antes posible.
-¡Buena suerte!😎👍✨
-
-## Objetivo episodio 2
-En la ejercitación anterior practicamos cómo debemos preparar el sistema de ruteo de
-una aplicación para poder codificar un CRUD (Create, Read, Update, Delete) o ABM (Alta,
-Baja, Modificación).
-
-En esta ejercitación estaremos trabajando con nuestra fuente de datos JSON para hacer
-que los cambios queden almacenados utilizando cada una de las rutas que
-implementamos en la clase anterior. Además, estaremos trabajando en la subida de
-imágenes de los productos.
-¡Buena suerte!😎👍✨
+😎👍✨
 
 ## M5 C22 y 23
 

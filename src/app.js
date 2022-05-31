@@ -36,7 +36,7 @@ app.use('/products', productsRouter);
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
 app.use((req, res, next) => next(createError(404)));
-/* app.use((req, res, next) => {
+/* app.use((req, res, next) => {       -> Otra manera de hacer el error 404
   res.status(404).render('error')
 }) */
 
