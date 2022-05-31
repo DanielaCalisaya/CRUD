@@ -6,7 +6,7 @@ const router = express.Router();
 const mainController = require('../controllers/mainController');
 
 router.get('/', mainController.index); //Aqui renderiza la vista del home
-router.get('/results', mainController.search); 
+router.get('/results', mainController.search); //Vista del buscador en donde puede que encuentre o no el producto
 
 
 
